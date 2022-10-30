@@ -7,7 +7,7 @@ const StoryForm = () =>
 {
 
     const initialValues = {
-        friends: [
+        story: [
             {
                 type: 1,
                 name: "Klaus"
@@ -21,7 +21,7 @@ const StoryForm = () =>
 
     return (
         <div>
-            <h1>Invite friends</h1>
+            <h1>Invite story</h1>
             <p>Check the console to see the formik state.</p>
             <p>Reproduction</p>
             <ol>
@@ -30,7 +30,7 @@ const StoryForm = () =>
                     Check the <code>touched</code> state in the console log
                 </li>
                 <li>
-                    It indicates <code>touched.friends: []</code> but one value was actually
+                    It indicates <code>touched.story: []</code> but one value was actually
                     touched
                 </li>
             </ol>
@@ -53,47 +53,47 @@ const StoryForm = () =>
                     return (
                         <Form>
                             <FieldArray
-                                name="friends"
+                                name="story"
                                 render={({ insert, remove, push }) => (
                                     <div>
-                                        {values.friends.length > 0 &&
-                                            values.friends.map((friend, index, friends) => (
+                                        {values.story.length > 0 &&
+                                            values.story.map((friend, index, story) => (
                                                 <div className="row" key={index}>
-                                                    {friends[index].type === 1 ? <div className="col">
-                                                        <label htmlFor={`friends.${index}.name`}>Name</label>
+                                                    {story[index].type === 1 ? <div className="col">
+                                                        <label htmlFor={`story.${index}.name`}>Name</label>
                                                         <Field
-                                                            name={`friends.${index}.name`}
+                                                            name={`story.${index}.name`}
                                                             placeholder="Jane Doe"
                                                             type="text"
                                                         />
-                                                        {errors.friends &&
-                                                            errors.friends[index] &&
-                                                            errors.friends[index].name &&
-                                                            touched.friends &&
-                                                            touched.friends[index].name && (
+                                                        {errors.story &&
+                                                            errors.story[index] &&
+                                                            errors.story[index].name &&
+                                                            touched.story &&
+                                                            touched.story[index].name && (
                                                                 <div className="field-error">
-                                                                    {errors.friends[index].name}
+                                                                    {errors.story[index].name}
                                                                 </div>
                                                             )}
                                                     </div>
                                                         : <div className="col">
-                                                            <label htmlFor={`friends.${index}.image`}>
+                                                            <label htmlFor={`story.${index}.image`}>
                                                             image
                                                             </label>
                                                             <input
                                                                 
                                                                 type="file"
                                                                 onChange={(event)=>{
-                                                                    setFieldValue(`friends.${index}.image`,event.target.files[0])
+                                                                    setFieldValue(`story.${index}.image`,event.target.files[0])
                                                                 }}
                                                             />
-                                                            {errors.friends &&
-                                                                errors.friends[index] &&
-                                                                errors.friends[index].image &&
-                                                                touched.friends &&
-                                                                touched.friends[index].image && (
+                                                            {errors.story &&
+                                                                errors.story[index] &&
+                                                                errors.story[index].image &&
+                                                                touched.story &&
+                                                                touched.story[index].image && (
                                                                     <div className="field-error">
-                                                                        {errors.friends[index].image}
+                                                                        {errors.story[index].image}
                                                                     </div>
                                                                 )}
                                                         </div>}
